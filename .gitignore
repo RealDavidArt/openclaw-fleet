@@ -1,0 +1,8 @@
+.env
+.env.*
+examples/out/
+examples/script-first-skill/out/
+examples/state/
+examples/logs/
+examples/usage.jsonl
+__pycache__/

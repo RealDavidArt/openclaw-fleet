@@ -1,0 +1,20 @@
+{
+  "stages": [
+    {
+      "name": "collect",
+      "cmd": "mkdir -p out && echo '3 meetings tomorrow' > out/meetings-$(date +%F).txt && echo 'collected 3'",
+      "expect": [{"file": "out/meetings-{date}.txt"}, {"stdout_regex": "collected \\d+"}]
+    },
+    {
+      "name": "draft_brief",
+      "needs": ["collect"],
+      "cmd": "echo 'Done! Brief is ready.'",
+      "expect": [{"file": "out/brief-{date}.md"}]
+    },
+    {
+      "name": "post_brief",
+      "needs": ["draft_brief"],
+      "cmd": "echo posted"
+    }
+  ]
+}
